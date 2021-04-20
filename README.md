@@ -1,6 +1,6 @@
 # Automatic-Irrigation-System-and-Data-Logging-Arduino-Project
 
-#   Video Demonstration
+#   Video Demonstration (Click on the Image below to watch the demonstration video)
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/q8FLbColFJo/maxresdefault.jpg)](https://www.youtube.com/watch?v=q8FLbColFJo)
 
