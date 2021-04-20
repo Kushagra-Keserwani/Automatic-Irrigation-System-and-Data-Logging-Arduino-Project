@@ -6,4 +6,4 @@
 
 #   Circuit Diagram
 
-![alt text](https://drive.google.com/file/d/1WBep1um31MNPFCLlby8K7_D1S-TDxcE2/view)
+![alt text](https://github.com/Kushagra-Keserwani/Automatic-Irrigation-System-and-Data-Logging-Arduino-Project/blob/main/Circuit%20Diagram.png)
