@@ -55,8 +55,8 @@ File logfile;
 Soil Moisture Reference
 Air = 0%
 Really dry soil = 10%
-Probably as low as you'd want = 20%
-Well watered = 50%
+Probably as low as you'd want = 40%
+Well watered = 70%
 Cup of water = 100%
 */
 
@@ -90,7 +90,7 @@ void setup() {
   pinMode(LEDPinRed, OUTPUT); //LED red pin
   pinMode(solenoidPin, OUTPUT); //solenoid pin
   digitalWrite(solenoidPin, LOW); //Make sure the valve is off
- // analogReference(EXTERNAL); //Sets the max voltage from analog inputs to whatever is connected to the Aref pin (should be 3.3v)
+
   
   //Establish connection with DHT sensor
   dht.begin();
@@ -159,12 +159,7 @@ void loop() {
   delay(150);
   digitalWrite(LEDPinGreen, LOW);
   
-//  Reset wateredToday variable if it's a new day
-  if (!(now.day()==rtc.now().day())) {
-    wateredToday = false;
-  }
-  
-  now = rtc.now();
+
   
   
   
@@ -175,22 +170,22 @@ void loop() {
 //   soilMoistureRaw = analogRead(soilMoisturePin)*(3.3/1024);
   delay(20);
   
-  //Volumetric Water Content is a piecewise function of the voltage from the sensor
-//  if (soilMoistureRaw < 1.1) {
-//    soilMoisture = (10 * soilMoistureRaw) - 1;
-//  }
-//  else if (soilMoistureRaw < 1.3) {
-//    soilMoisture = (25 * soilMoistureRaw) - 17.5;
-//  }
-//  else if (soilMoistureRaw < 1.82) {
-//    soilMoisture = (48.08 * soilMoistureRaw) - 47.5;
-//  }
-//  else if (soilMoistureRaw < 2.2) {
-//    soilMoisture = (26.32 * soilMoistureRaw) - 7.89;
-//  }
-//  else {
-//    soilMoisture = (62.5 * soilMoistureRaw) - 87.5;
-//  }
+  Volumetric Water Content is a piecewise function of the voltage from the sensor
+ if (soilMoistureRaw < 1.1) {
+   soilMoisture = (10 * soilMoistureRaw) - 1;
+ }
+ else if (soilMoistureRaw < 1.3) {
+   soilMoisture = (25 * soilMoistureRaw) - 17.5;
+ }
+ else if (soilMoistureRaw < 1.82) {
+   soilMoisture = (48.08 * soilMoistureRaw) - 47.5;
+ }
+ else if (soilMoistureRaw < 2.2) {
+   soilMoisture = (26.32 * soilMoistureRaw) - 7.89;
+ }
+ else {
+   soilMoisture = (62.5 * soilMoistureRaw) - 87.5;
+ }
     
   humidity = dht.readHumidity();
   delay(20);
@@ -233,8 +228,7 @@ void loop() {
   if ((soilMoistureRaw > wateringThreshold) ) {
     //water the garden
     digitalWrite(solenoidPin, LOW);
-//   delay(wateringTime);
-//    digitalWrite(solenoidPin, LOW);
+
   
     //record that we're watering
     logfile.print("TRUE");
