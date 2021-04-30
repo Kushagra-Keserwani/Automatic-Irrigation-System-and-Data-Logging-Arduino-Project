@@ -16,7 +16,7 @@
 #include <SD.h>
 #define DHTTYPE DHT11
 #define ECHO_TO_SERIAL 1 //Sends datalogging to serial if 1, nothing if 0
-#define LOG_INTERVAL 100 //milliseconds between entries (6 minutes = 360000)
+#define LOG_INTERVAL 36000 //milliseconds between entries (6 minutes = 360000)
 
 
 const int soilMoisturePin = A1;
