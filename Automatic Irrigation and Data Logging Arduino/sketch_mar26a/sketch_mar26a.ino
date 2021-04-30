@@ -1,18 +1,8 @@
 
-
-
-
-
-
-
-
 #include <DHT.h>
 #include <DHT_U.h>
-
-
 #include <SPI.h>
 #include <Wire.h>
-#include "RTClib.h"
 #include <SD.h>
 #define DHTTYPE DHT11
 #define ECHO_TO_SERIAL 1 //Sends datalogging to serial if 1, nothing if 0
@@ -37,7 +27,6 @@ const double B = 1.3*pow(10.0,7);
 const double m = -1.4;
 
 DHT dht(dhtPin, DHTTYPE);
-RTC_DS1307 rtc;
 
 
 float soilMoistureRaw = 0; //Raw analog input of soil moisture sensor (volts)
@@ -100,10 +89,7 @@ void setup() {
 
   
   //Set the time and date on the real time clock if necessary
-  if (! rtc.isrunning()) {
-    // following line sets the RTC to the date & time this sketch was compiled
-    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-  }
+  
   
   //Check if SD card is present and can be initialized
   if (!SD.begin(chipSelect)) {
@@ -137,7 +123,7 @@ void setup() {
   Serial.println("Air Temp (F),Soil Moisture Content (%),Relative Humidity (%),Heat Index (F),Sunlight Illumination (lux),Watering?");
 #endif ECHO_TO_SERIAL// attempt to write out the header to the file
 
-  now = rtc.now();
+ 
   
 }
 
