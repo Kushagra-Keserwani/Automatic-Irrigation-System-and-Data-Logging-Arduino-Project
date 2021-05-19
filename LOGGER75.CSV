@@ -1,4 +1,4 @@
-Air Temp (F),Soil Moisture Content (%),Relative Humidity (%),Heat Index (F),Sunlight Illumination (lux),Watering?
+Air Temp (F),Soil Moisture Content (%),Relative Humidity (%),Heat Index (F),Sunlight Illumination (lux),Not Watering?
 62.6,528,50,60.91,415.11,TRUE
 62.6,533,50,60.91,404.36,TRUE
 62.6,539,50,60.91,470.81,TRUE
